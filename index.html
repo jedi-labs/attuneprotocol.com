@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Attune — Evening Shutdown Ritual</title>
+<meta name="description" content="A 10-minute evening protocol for high performers. Built on research. Not a meditation app."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf8f3;
+    --paper-2: #f4f1ea;
+    --paper-3: #ebe7dd;
+    --ink: #16130e;
+    --ink-2: #3a342b;
+    --ink-3: #6b6358;
+    --ink-4: #9a9085;
+    --hair: rgba(22,19,14,0.08);
+    --hair-2: rgba(22,19,14,0.05);
+    --accent: oklch(55% 0.11 255);
+    --accent-soft: oklch(92% 0.035 255);
+    --accent-ink: oklch(40% 0.09 255);
+    --stress-1: oklch(72% 0.09 155);
+    --stress-3: oklch(82% 0.10 75);
+    --stress-5: oklch(65% 0.14 25);
+    --font-ui: 'Inter Tight', -apple-system, system-ui, sans-serif;
+    --font-editorial: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+
+  /* Layout */
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  /* Typography */
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.8px;
+    color: var(--ink-3); text-transform: uppercase; font-weight: 500;
+  }
+  .h1 {
+    font-family: var(--font-editorial); font-weight: 400;
+    font-size: clamp(48px, 8vw, 104px); line-height: 0.98;
+    letter-spacing: -2px; margin: 0; text-wrap: balance;
+  }
+  .h2 {
+    font-family: var(--font-editorial); font-weight: 400;
+    font-size: clamp(32px, 4.5vw, 56px); line-height: 1.05;
+    letter-spacing: -1px; margin: 0; text-wrap: balance;
+  }
+  .h3 {
+    font-family: var(--font-editorial); font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 30px); line-height: 1.15;
+    letter-spacing: -0.4px; margin: 0;
+  }
+  .italic { font-style: italic; }
+  .muted { color: var(--ink-3); }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250,248,243,0.85);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border-bottom: 1px solid var(--hair);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 28px; max-width: 1120px; margin: 0 auto;
+  }
+  .wordmark { display: flex; align-items: center; gap: 7px; font-family: var(--font-editorial); font-style: italic; font-size: 20px; color: var(--ink); letter-spacing: -0.4px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14px; color: var(--ink-2); transition: color 150ms; }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 700px) { .nav-links { display: none; } }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 48px; padding: 0 20px; border-radius: 12px;
+    font-size: 15px; font-weight: 500; letter-spacing: -0.1px;
+    cursor: pointer; border: none; transition: transform 200ms ease, background 200ms ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: #000; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--hair); }
+  .btn-ghost:hover { background: var(--paper-2); }
+  .btn-sm { height: 38px; padding: 0 14px; font-size: 13px; border-radius: 10px; }
+
+  /* Sections */
+  section { padding: 80px 0; position: relative; }
+  @media (min-width: 900px) { section { padding: 120px 0; } }
+
+  /* Hero */
+  .hero { padding-top: 72px; padding-bottom: 100px; position: relative; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 80px; } }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 99px; background: var(--paper-2); border: 1px solid var(--hair); }
+  .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 99px; background: var(--stress-1); }
+  .hero p.lede { font-size: 18px; line-height: 1.55; color: var(--ink-2); max-width: 520px; margin-top: 26px; text-wrap: pretty; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .hero-meta { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; }
+  .hero-meta-item { font-size: 12px; color: var(--ink-3); display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); letter-spacing: 0.5px; }
+
+  /* Phone mock */
+  .phone-frame {
+    width: 340px; height: 700px; border-radius: 48px;
+    background: var(--ink); position: relative;
+    box-shadow: 0 50px 100px rgba(22,19,14,0.18), 0 0 0 1px rgba(0,0,0,0.12);
+    padding: 10px; margin: 0 auto;
+  }
+  .phone-screen { width: 100%; height: 100%; border-radius: 40px; background: var(--paper); overflow: hidden; position: relative; }
+  .phone-island { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 110px; height: 32px; border-radius: 24px; background: #000; z-index: 10; }
+  .phone-content { padding: 62px 20px 0; height: 100%; display: flex; flex-direction: column; }
+  .phone-eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; color: var(--ink-3); text-transform: uppercase; }
+  .phone-h { font-family: var(--font-editorial); font-size: 28px; line-height: 1.05; letter-spacing: -0.6px; margin-top: 10px; }
+  .phone-h em { font-style: italic; color: var(--ink-3); }
+  .phone-cta {
+    margin-top: 18px; background: var(--ink); color: var(--paper); border-radius: 18px;
+    padding: 18px 18px 16px; position: relative; overflow: hidden;
+  }
+  .phone-cta::after {
+    content: ''; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px;
+    background: radial-gradient(circle, oklch(55% 0.11 255 / 0.4), transparent 70%);
+    border-radius: 999px;
+  }
+  .phone-cta-eyebrow { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1.2px; color: rgba(250,248,243,0.55); text-transform: uppercase; }
+  .phone-cta-h { font-family: var(--font-editorial); font-size: 26px; line-height: 1; margin-top: 8px; letter-spacing: -0.4px; }
+  .phone-cta-sub { font-size: 11px; color: rgba(250,248,243,0.65); margin-top: 6px; }
+  .phone-chips { display: flex; gap: 4px; margin-top: 14px; }
+  .phone-chip { flex: 1; height: 22px; border-radius: 6px; background: rgba(250,248,243,0.08); color: rgba(250,248,243,0.75); font-size: 9px; display: flex; align-items: center; justify-content: center; letter-spacing: 0.2px; }
+  .phone-cta-btn { margin-top: 14px; width: 100%; height: 40px; border-radius: 11px; background: var(--paper); color: var(--ink); font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; }
+  .phone-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 14px; }
+  .phone-stat { background: var(--paper-2); border: 1px solid var(--hair); border-radius: 10px; padding: 8px 10px; }
+  .phone-stat-label { font-family: var(--font-mono); font-size: 8px; color: var(--ink-4); letter-spacing: 0.5px; text-transform: uppercase; }
+  .phone-stat-val { font-family: var(--font-editorial); font-size: 18px; line-height: 1; margin-top: 2px; }
+  .phone-stat-unit { font-size: 9px; color: var(--ink-3); margin-top: 2px; }
+  .phone-indicator { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 110px; height: 4px; border-radius: 99px; background: rgba(22,19,14,0.2); }
+
+  .phone-wrap { position: relative; display: flex; justify-content: center; }
+  .phone-wrap::before {
+    content: ''; position: absolute; inset: -40px -60px;
+    background: radial-gradient(ellipse at center, oklch(55% 0.11 255 / 0.12), transparent 65%);
+    z-index: -1; border-radius: 999px;
+  }
+
+  /* Bands */
+  .band-paper2 { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+  .band-ink { background: var(--ink); color: var(--paper); }
+  .band-ink .eyebrow { color: rgba(250,248,243,0.5); }
+  .band-ink .muted { color: rgba(250,248,243,0.7); }
+
+  /* Protocol steps */
+  .steps { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 60px; border-top: 1px solid var(--hair); }
+  .step-row {
+    display: grid; grid-template-columns: 80px 1fr 1fr;
+    gap: 24px; padding: 32px 0; border-bottom: 1px solid var(--hair);
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .step-row { grid-template-columns: 60px 1fr; }
+    .step-row .step-cite { grid-column: 1 / -1; padding-left: 60px; }
+  }
+  .step-num { font-family: var(--font-editorial); font-style: italic; font-size: 52px; color: var(--accent-ink); line-height: 1; letter-spacing: -2px; }
+  .step-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; color: var(--ink-3); text-transform: uppercase; }
+  .step-title { font-family: var(--font-editorial); font-size: 30px; line-height: 1.1; margin-top: 6px; letter-spacing: -0.4px; }
+  .step-desc { margin-top: 10px; color: var(--ink-2); line-height: 1.55; max-width: 440px; }
+  .step-cite { font-size: 13px; color: var(--ink-3); line-height: 1.55; }
+  .step-cite-author { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--ink); }
+  .step-cite-author a { border-bottom: 1px solid var(--hair); transition: border-color 150ms; }
+  .step-cite-author a:hover { border-color: var(--ink); }
+  .step-cite-journal { font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); margin-top: 4px; letter-spacing: 0.4px; }
+
+  /* Differentiator grid */
+  .diff-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 48px; }
+  @media (min-width: 760px) { .diff-grid { grid-template-columns: 1fr 1fr; } }
+  .diff-card { background: var(--paper); border: 1px solid var(--hair); border-radius: 18px; padding: 24px; }
+  .diff-row { display: flex; align-items: flex-start; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--hair); }
+  .diff-row:last-child { border-bottom: none; }
+  .diff-sym { font-family: var(--font-editorial); font-size: 24px; line-height: 1; margin-top: 2px; flex-shrink: 0; width: 18px; }
+  .diff-sym.no { color: oklch(58% 0.15 25); }
+  .diff-sym.yes { color: oklch(55% 0.1 155); }
+  .diff-text { font-size: 15px; line-height: 1.5; }
+  .diff-strike { color: var(--ink-4); text-decoration: line-through; }
+
+  /* Privacy cards */
+  .privacy-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 48px; }
+  @media (min-width: 760px) { .privacy-grid { grid-template-columns: 1fr 1fr 1fr; } }
+  .privacy-card { background: var(--paper); border: 1px solid var(--hair); border-radius: 16px; padding: 22px; }
+  .privacy-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--paper-2); display: flex; align-items: center; justify-content: center; color: var(--ink-2); margin-bottom: 14px; }
+  .privacy-h { font-family: var(--font-editorial); font-size: 20px; line-height: 1.15; letter-spacing: -0.2px; }
+  .privacy-p { margin-top: 8px; font-size: 14px; color: var(--ink-3); line-height: 1.5; }
+
+  /* Pricing */
+  .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 48px; }
+  @media (min-width: 760px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
+  .price-card { background: var(--paper); border: 1px solid var(--hair); border-radius: 22px; padding: 28px; position: relative; overflow: hidden; }
+  .price-card.pro { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .price-card.pro::after {
+    content: ''; position: absolute; right: -80px; bottom: -80px; width: 240px; height: 240px;
+    background: radial-gradient(circle, oklch(55% 0.11 255 / 0.38), transparent 70%);
+    border-radius: 999px; pointer-events: none;
+  }
+  .price-tag { font-family: var(--font-editorial); font-size: 52px; line-height: 1; letter-spacing: -2px; margin-top: 18px; }
+  .price-tag .unit { font-size: 16px; color: var(--ink-3); margin-left: 2px; font-family: var(--font-ui); letter-spacing: 0; }
+  .pro .price-tag .unit { color: rgba(250,248,243,0.6); }
+  .price-list { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 12px; }
+  .price-list li { display: flex; gap: 10px; font-size: 14px; line-height: 1.45; }
+  .price-check { flex-shrink: 0; margin-top: 3px; }
+  .price-cta { margin-top: 26px; width: 100%; }
+
+  /* Research grid */
+  .ref-grid {
+    margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1px solid var(--hair); border-radius: 18px; overflow: hidden; background: var(--paper);
+  }
+  @media (max-width: 600px) {
+    .ref-grid { grid-template-columns: 1fr; }
+    .ref-cell { border-right: none !important; }
+    .ref-cell:not(:last-child) { border-bottom: 1px solid var(--hair) !important; }
+  }
+  .ref-cell { padding: 24px; }
+  .ref-cell a.ref-author { font-family: var(--font-editorial); font-style: italic; font-size: 16px; color: var(--ink); border-bottom: 1px solid var(--hair); transition: border-color 150ms; }
+  .ref-cell a.ref-author:hover { border-color: var(--ink); }
+  .ref-doi { font-family: var(--font-mono); font-size: 10px; color: var(--accent-ink); letter-spacing: 0.4px; margin-top: 6px; }
+  .ref-doi a { border-bottom: 1px solid transparent; transition: border-color 150ms; }
+  .ref-doi a:hover { border-color: var(--accent-ink); }
+
+  /* FAQ */
+  .faq-list { margin-top: 40px; border-top: 1px solid var(--hair); }
+  details { border-bottom: 1px solid var(--hair); padding: 20px 0; }
+  summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: var(--font-editorial); font-size: 22px; letter-spacing: -0.3px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-family: var(--font-ui); font-weight: 300; font-size: 24px; color: var(--ink-3); transition: transform 200ms ease; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin: 12px 0 0; font-size: 15px; line-height: 1.6; color: var(--ink-2); max-width: 600px; }
+
+  /* CTA band */
+  .cta-band { text-align: center; padding: 100px 28px; }
+  .cta-band .h2 { max-width: 700px; margin: 0 auto; }
+  .cta-band .muted { max-width: 520px; margin: 18px auto 0; font-size: 16px; line-height: 1.55; }
+
+  /* Footer */
+  footer { padding: 40px 0 60px; border-top: 1px solid var(--hair); font-size: 13px; color: var(--ink-3); }
+  .foot-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .foot-links a:hover { color: var(--ink); }
+
+  /* Ambient decor */
+  .hero-decor {
+    position: absolute; top: 0; right: 0; left: 0; pointer-events: none; z-index: 0;
+    height: 100%; opacity: 0.6;
+    background:
+      radial-gradient(1000px 500px at 85% -10%, oklch(55% 0.11 255 / 0.08), transparent 60%),
+      radial-gradient(800px 400px at 10% 90%, oklch(72% 0.09 155 / 0.06), transparent 60%);
+  }
+
+  .rule { height: 1px; background: var(--hair); border: none; }
+
+  /* Breath bloom */
+  .bloom {
+    width: 220px; height: 220px; position: relative; display: flex; align-items: center; justify-content: center;
+    animation: bloom 8s cubic-bezier(0.45,0,0.2,1) infinite;
+  }
+  @keyframes bloom {
+    0%, 100% { transform: scale(0.7); }
+    25%, 50% { transform: scale(1); }
+    75% { transform: scale(0.7); }
+  }
+  .bloom::before, .bloom::after {
+    content: ''; position: absolute; inset: 0; border-radius: 999px;
+    background: radial-gradient(circle, oklch(55% 0.11 255 / 0.3), transparent 72%);
+  }
+  .bloom::after {
+    inset: 30px; background: radial-gradient(circle, oklch(55% 0.11 255 / 0.5), transparent 70%);
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="wordmark">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 9 A8 8 0 0 1 20 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="18" r="2.2" fill="currentColor"/></svg>
+      Attune
+    </a>
+    <div class="nav-links">
+      <a href="#protocol">Protocol</a>
+      <a href="#research">Research</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#download" class="btn btn-primary btn-sm">Download</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-decor"></div>
+  <div class="wrap" style="position: relative;">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span class="eyebrow" style="letter-spacing: 1.2px;">Evening protocol · 10 minutes</span>
+        </div>
+        <h1 class="h1" style="margin-top: 22px;">
+          Your brain doesn't know<br/>
+          <em class="italic" style="color: var(--accent-ink);">work is over.</em>
+        </h1>
+        <p class="lede">
+          Attune is a 10-minute end-of-day shutdown ritual for high performers. Four evidence-backed steps to close open loops, decompress, and start tomorrow sharper. Not a meditation app.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#download">
+            Download for iPhone
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#protocol">See the protocol</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+            NO ACCOUNT
+          </div>
+          <div class="hero-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>
+            LOCAL ONLY
+          </div>
+          <div class="hero-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            ~10 MIN · HONEST
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone mock -->
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <div class="phone-island"></div>
+          <div class="phone-screen">
+            <div class="phone-content">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: baseline; gap: 5px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 9 A8 8 0 0 1 20 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="18" r="2.2" fill="currentColor"/></svg>
+                  <span style="font-family: var(--font-editorial); font-style: italic; font-size: 15px;">Attune</span>
+                </div>
+                <div style="width: 28px; height: 28px; border-radius: 99px; background: var(--paper-2); border: 1px solid var(--hair);"></div>
+              </div>
+              <div class="phone-eyebrow" style="margin-top: 20px;">Mon · Apr 20</div>
+              <h3 class="phone-h">Good evening, Alex.<br/><em>Ready to close out?</em></h3>
+              <div class="phone-cta">
+                <div class="phone-cta-eyebrow">Tonight's protocol</div>
+                <div class="phone-cta-h">Begin Attune</div>
+                <div class="phone-cta-sub">4 steps · ~10 min · finish in bed</div>
+                <div class="phone-chips">
+                  <div class="phone-chip">Stress</div>
+                  <div class="phone-chip">Breath</div>
+                  <div class="phone-chip">Journal</div>
+                  <div class="phone-chip">Top 3</div>
+                </div>
+                <button class="phone-cta-btn">Begin →</button>
+              </div>
+              <div class="phone-stats">
+                <div class="phone-stat"><div class="phone-stat-label">Streak</div><div class="phone-stat-val">8</div><div class="phone-stat-unit">days</div></div>
+                <div class="phone-stat"><div class="phone-stat-label">Avg stress</div><div class="phone-stat-val">3.2</div><div class="phone-stat-unit">past week</div></div>
+                <div class="phone-stat"><div class="phone-stat-label">Last</div><div class="phone-stat-val" style="font-size:13px; margin-top: 6px;">Yesterday</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-indicator"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem band -->
+<section class="band-paper2" style="padding: 80px 0;">
+  <div class="wrap-narrow">
+    <div class="eyebrow">The problem</div>
+    <h2 class="h2" style="margin-top: 14px;">
+      You close the laptop. Your brain doesn't close.
+    </h2>
+    <p style="font-size: 18px; line-height: 1.6; color: var(--ink-2); margin-top: 22px; max-width: 620px;">
+      Unfinished tasks keep firing in the background — a cognitive loop called the <em class="italic">Zeigarnik effect</em>. That's why you lie in bed at 11:47 drafting Slack replies in your head. Scrolling a feed doesn't close the loops. Neither does a glass of wine.
+    </p>
+    <p style="font-size: 18px; line-height: 1.6; color: var(--ink-2); margin-top: 18px; max-width: 620px;">
+      Four specific things do. We stitched them into a ten-minute ritual.
+    </p>
+  </div>
+</section>
+
+<!-- Protocol -->
+<section id="protocol">
+  <div class="wrap-narrow">
+    <div class="eyebrow">The protocol</div>
+    <h2 class="h2" style="margin-top: 14px;">
+      Four steps.<br/>
+      <em class="italic muted">Each one does something specific.</em>
+    </h2>
+
+    <div class="steps">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-label">Check-in · 30 sec</div>
+          <div class="step-title">Name the load.</div>
+          <div class="step-desc">One tap on a 1–5 scale. Optional one-liner for what's driving it. Naming your state is the first move in detaching from it.</div>
+        </div>
+        <div class="step-cite">
+          <div class="step-cite-author"><a href="https://doi.org/10.1177/0963721411434979" target="_blank" rel="noopener">Sonnentag, 2012</a></div>
+          <div class="step-cite-journal">CURRENT DIRECTIONS IN PSYCHOLOGICAL SCIENCE</div>
+          <p style="margin-top: 10px; margin-bottom: 0; line-height: 1.5;">Employees who mentally disengaged in the evening reported lower fatigue and higher next-morning energy.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-label">Breath · 90 sec</div>
+          <div class="step-title">Bring the nervous system down.</div>
+          <div class="step-desc">Box breathing, 4-7-8, or Wim Hof — your choice. Equal-length exhales engage the vagal brake, the body's built-in stress shutoff. Haptic-guided.</div>
+        </div>
+        <div class="step-cite">
+          <div class="step-cite-author"><a href="https://wwnorton.com/books/The-Polyvagal-Theory/" target="_blank" rel="noopener">Porges, 2011</a></div>
+          <div class="step-cite-journal">POLYVAGAL THEORY · NORTON</div>
+          <p style="margin-top: 10px; margin-bottom: 0; line-height: 1.5;">Slow, paced exhalation activates the ventral vagal complex — parasympathetic activation, measurable HRV shift.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-label">Journal · 2 min</div>
+          <div class="step-title">Two prompts. Short answers.</div>
+          <div class="step-desc">"What went well today?" and "What's still weighing on me?" Two to three sentences each. Even a light-touch version of expressive writing works.</div>
+        </div>
+        <div class="step-cite">
+          <div class="step-cite-author"><a href="https://doi.org/10.1111/j.1467-9280.1997.tb00403.x" target="_blank" rel="noopener">Pennebaker, 1997</a></div>
+          <div class="step-cite-journal">PSYCHOLOGICAL SCIENCE · UT AUSTIN</div>
+          <p style="margin-top: 10px; margin-bottom: 0; line-height: 1.5;">Measurable drops in cortisol and improved immune markers after four short writing sessions. Effects held at 6-month follow-up.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-label">Top 3 · 1 min</div>
+          <div class="step-title">Tomorrow's three things.</div>
+          <div class="step-desc">Three numbered fields. Specific verbs, no categories, no tags. Close the open loops by committing them to paper.</div>
+        </div>
+        <div class="step-cite">
+          <div class="step-cite-author"><a href="https://doi.org/10.1037/xge0000374" target="_blank" rel="noopener">Scullin et al., 2018</a></div>
+          <div class="step-cite-journal">J. EXP. PSYCH. · BAYLOR UNIVERSITY</div>
+          <p style="margin-top: 10px; margin-bottom: 0; line-height: 1.5;">Writing a specific to-do list before bed cut time to fall asleep by 9 minutes vs. journaling about completed tasks.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <a href="#research" class="btn btn-ghost">Read the research →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Breath visual -->
+<section class="band-paper2" style="padding: 100px 0;">
+  <div class="wrap">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; max-width: 1000px; margin: 0 auto;" class="breath-grid">
+      <style>@media (min-width: 760px) { .breath-grid { grid-template-columns: 1fr 1fr !important; } }</style>
+      <div style="display: flex; justify-content: center;">
+        <div class="bloom"></div>
+      </div>
+      <div>
+        <div class="eyebrow">Step 2 · in motion</div>
+        <h3 class="h2" style="font-size: clamp(28px, 4vw, 44px); margin-top: 12px;">
+          <em class="italic">Inhale.</em> Hold. <em class="italic">Exhale.</em> Hold.
+        </h3>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--ink-2); margin-top: 18px; max-width: 440px;">
+          Three patterns to choose from: Box (4-4-4-4), 4-7-8, or Wim Hof. A radial bloom guides your pace. Taptic feedback on each phase transition — no staring at a timer.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What it isn't -->
+<section>
+  <div class="wrap-narrow">
+    <div class="eyebrow">What it isn't</div>
+    <h2 class="h2" style="margin-top: 14px;">
+      Not a meditation app.<br/>
+      <em class="italic muted">Not a wellness app. Not a journal.</em>
+    </h2>
+    <p class="muted" style="font-size: 16px; line-height: 1.6; margin-top: 18px; max-width: 540px;">
+      We built Attune for the person who won't touch Calm. Skeptical, evidence-driven, allergic to ambient whale sounds. Here's what we left out on purpose.
+    </p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="eyebrow" style="margin-bottom: 4px;">We don't do</div>
+        <div class="diff-row"><div class="diff-sym no">×</div><div class="diff-text diff-strike">Guided visualizations</div></div>
+        <div class="diff-row"><div class="diff-sym no">×</div><div class="diff-text diff-strike">"Forest rain" soundscapes</div></div>
+        <div class="diff-row"><div class="diff-sym no">×</div><div class="diff-text diff-strike">Streak shaming push notifications</div></div>
+        <div class="diff-row"><div class="diff-sym no">×</div><div class="diff-text diff-strike">Mid-session upsells</div></div>
+        <div class="diff-row"><div class="diff-sym no">×</div><div class="diff-text diff-strike">Required account or email</div></div>
+        <div class="diff-row"><div class="diff-sym no">×</div><div class="diff-text diff-strike">Cosmetic "journal themes"</div></div>
+      </div>
+      <div class="diff-card">
+        <div class="eyebrow" style="margin-bottom: 4px;">We do</div>
+        <div class="diff-row"><div class="diff-sym yes">✓</div><div class="diff-text">One fixed flow. No customization paralysis.</div></div>
+        <div class="diff-row"><div class="diff-sym yes">✓</div><div class="diff-text">Inline citations on every step</div></div>
+        <div class="diff-row"><div class="diff-sym yes">✓</div><div class="diff-text">10 minutes. Actually 10 minutes.</div></div>
+        <div class="diff-row"><div class="diff-sym yes">✓</div><div class="diff-text">All data lives on your phone, forever</div></div>
+        <div class="diff-row"><div class="diff-sym yes">✓</div><div class="diff-text">Free core protocol, no account needed</div></div>
+        <div class="diff-row"><div class="diff-sym yes">✓</div><div class="diff-text">Export your journal as Markdown or PDF</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research -->
+<section class="band-paper2" id="research">
+  <div class="wrap-narrow">
+    <div class="eyebrow">The evidence</div>
+    <h2 class="h2" style="margin-top: 14px;">
+      Built on research.<br/>
+      <em class="italic muted">Not vibes.</em>
+    </h2>
+    <p class="muted" style="font-size: 16px; line-height: 1.6; margin-top: 18px; max-width: 540px;">
+      Every step traces to a specific, peer-reviewed finding. The app shows you the citation inline as you go. Read the papers — decide for yourself.
+    </p>
+
+    <div class="ref-grid">
+      <div class="ref-cell" style="border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair);">
+        <div class="eyebrow">Check-in</div>
+        <div style="margin-top: 8px;"><a class="ref-author" href="https://doi.org/10.1177/0963721411434979" target="_blank" rel="noopener">Sabine Sonnentag</a></div>
+        <div style="font-size: 13px; color: var(--ink-3); margin-top: 2px;">University of Mannheim · 2012</div>
+        <div class="step-cite-journal" style="margin-top: 10px;">PSYCHOLOGICAL DETACHMENT FROM WORK</div>
+        <div class="ref-doi"><a href="https://doi.org/10.1177/0963721411434979" target="_blank" rel="noopener">doi:10.1177/0963721411434979</a></div>
+      </div>
+      <div class="ref-cell" style="border-bottom: 1px solid var(--hair);">
+        <div class="eyebrow">Breathwork</div>
+        <div style="margin-top: 8px;"><a class="ref-author" href="https://wwnorton.com/books/The-Polyvagal-Theory/" target="_blank" rel="noopener">Stephen Porges</a></div>
+        <div style="font-size: 13px; color: var(--ink-3); margin-top: 2px;">Indiana University · 2011</div>
+        <div class="step-cite-journal" style="margin-top: 10px;">THE POLYVAGAL THEORY · W.W. NORTON</div>
+        <div class="ref-doi"><a href="https://wwnorton.com/books/The-Polyvagal-Theory/" target="_blank" rel="noopener">ISBN 9780393707007</a></div>
+      </div>
+      <div class="ref-cell" style="border-right: 1px solid var(--hair);">
+        <div class="eyebrow">Journal</div>
+        <div style="margin-top: 8px;"><a class="ref-author" href="https://doi.org/10.1111/j.1467-9280.1997.tb00403.x" target="_blank" rel="noopener">James W. Pennebaker</a></div>
+        <div style="font-size: 13px; color: var(--ink-3); margin-top: 2px;">UT Austin · 1997</div>
+        <div class="step-cite-journal" style="margin-top: 10px;">WRITING ABOUT EMOTIONAL EXPERIENCES</div>
+        <div class="ref-doi"><a href="https://doi.org/10.1111/j.1467-9280.1997.tb00403.x" target="_blank" rel="noopener">doi:10.1111/j.1467-9280.1997.tb00403.x</a></div>
+      </div>
+      <div class="ref-cell">
+        <div class="eyebrow">Top 3</div>
+        <div style="margin-top: 8px;"><a class="ref-author" href="https://doi.org/10.1037/xge0000374" target="_blank" rel="noopener">Michael Scullin et al.</a></div>
+        <div style="font-size: 13px; color: var(--ink-3); margin-top: 2px;">Baylor University · 2018</div>
+        <div class="step-cite-journal" style="margin-top: 10px;">EFFECTS OF BEDTIME WRITING</div>
+        <div class="ref-doi"><a href="https://doi.org/10.1037/xge0000374" target="_blank" rel="noopener">doi:10.1037/xge0000374</a></div>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top: 24px; font-size: 13px; line-height: 1.6; max-width: 520px;">
+      Attune won't cure insomnia, fix burnout, or replace therapy. It's a 10-minute protocol grounded in specific findings. If something is breaking — talk to a clinician, not an app.
+    </p>
+  </div>
+</section>
+
+<!-- Privacy -->
+<section id="privacy">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Privacy</div>
+    <h2 class="h2" style="margin-top: 14px;">
+      Your worst days<br/>
+      <em class="italic">stay on your phone.</em>
+    </h2>
+    <p class="muted" style="font-size: 16px; line-height: 1.6; margin-top: 18px; max-width: 540px;">
+      The whole point of journaling is radical honesty. That doesn't work if a server is watching.
+    </p>
+
+    <div class="privacy-grid">
+      <div class="privacy-card">
+        <div class="privacy-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+        </div>
+        <div class="privacy-h">No account</div>
+        <div class="privacy-p">No email, no password, no "sign in with Apple." Download the app and start.</div>
+      </div>
+      <div class="privacy-card">
+        <div class="privacy-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>
+        </div>
+        <div class="privacy-h">Local-only storage</div>
+        <div class="privacy-p">Entries live on your device. No cloud sync. No backup server. Nothing leaves.</div>
+      </div>
+      <div class="privacy-card">
+        <div class="privacy-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-5"/></svg>
+        </div>
+        <div class="privacy-h">No analytics</div>
+        <div class="privacy-p">No Mixpanel, no Amplitude, no Facebook pixel. Signal comes from App Store ratings and one feedback button.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="band-paper2">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Pricing</div>
+    <h2 class="h2" style="margin-top: 14px;">
+      The ritual stays free.<br/>
+      <em class="italic muted">Forever.</em>
+    </h2>
+    <p class="muted" style="font-size: 16px; line-height: 1.6; margin-top: 18px; max-width: 540px;">
+      The core protocol — including history, breathwork, and morning re-entry — is free, unlimited, forever. Pro adds export and platform integrations.
+    </p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="eyebrow">Free</div>
+        <div class="price-tag">$0<span class="unit">/ forever</span></div>
+        <ul class="price-list">
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+            Full 4-step evening protocol
+          </li>
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+            Unlimited sessions
+          </li>
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+            All breathwork patterns — Box, 4-7-8, Wim Hof
+          </li>
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+            Session history + stress trends
+          </li>
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+            Morning re-entry — Top 3 AM companion
+          </li>
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+            Evening reminder · Local storage
+          </li>
+        </ul>
+        <a href="#download" class="btn btn-ghost price-cta" style="display: flex;">Download free</a>
+      </div>
+
+      <div class="price-card pro">
+        <div class="eyebrow" style="color: rgba(250,248,243,0.55);">Pro</div>
+        <div class="price-tag">$3.99<span class="unit">/ month · or $29.99/yr</span></div>
+        <ul class="price-list" style="color: rgba(250,248,243,0.85);">
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: oklch(75% 0.12 155);"><path d="M5 12l5 5 9-11"/></svg>
+            Everything in Free
+          </li>
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: oklch(75% 0.12 155);"><path d="M5 12l5 5 9-11"/></svg>
+            Export journal as Markdown or PDF
+          </li>
+          <li>
+            <svg class="price-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: oklch(75% 0.12 155);"><path d="M5 12l5 5 9-11"/></svg>
+            Apple Watch breathwork · Shortcuts
+          </li>
+        </ul>
+        <a href="#download" class="btn price-cta" style="background: var(--paper); color: var(--ink); position: relative; z-index: 1; display: flex;">Start Pro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Questions</div>
+    <h2 class="h2" style="margin-top: 14px;">Fair ones we get a lot.</h2>
+
+    <div class="faq-list">
+      <details>
+        <summary>Is this just a meditation app?</summary>
+        <p>No. There are no visualizations, body scans, or guided meditations. Attune is a structured protocol — four defined steps with defined durations — grounded in research on work recovery, not contemplative practice.</p>
+      </details>
+      <details>
+        <summary>Does it really take ten minutes?</summary>
+        <p>Yes, and it's honest about it. 30 seconds for the check-in, 90 seconds of breathwork, two minutes of journaling, a minute for tomorrow's top 3. We don't pad it with "gentle nudges" or "optional deepening."</p>
+      </details>
+      <details>
+        <summary>What if I already journal?</summary>
+        <p>Keep doing it. Attune's journal step is deliberately minimal — two prompts, three sentences each — because that's what the Pennebaker protocol validates. It complements a longer practice; it doesn't replace it.</p>
+      </details>
+      <details>
+        <summary>Why no streaks as the main mechanic?</summary>
+        <p>Streaks are a retention hack, not an outcome. They also make you feel worse on the day you miss. We show streak count, but the primary signal is your stress trend over time — which is the thing you're actually trying to move.</p>
+      </details>
+      <details>
+        <summary>Is there an Android version?</summary>
+        <p>Not at launch. V1 is iOS only. The sooner the iOS version covers its costs, the sooner Android becomes possible.</p>
+      </details>
+      <details>
+        <summary>Can I export my data?</summary>
+        <p>Yes. Pro users can export the full journal as Markdown or PDF at any time. Your data is yours — local and always accessible.</p>
+      </details>
+      <details>
+        <summary>I don't believe apps change behavior.</summary>
+        <p>Fair. Most don't. Attune is designed to be a small, fixed ritual you attach to an existing trigger — shutting the laptop or getting into bed. The ritual is what does the work; the app is just the guide.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="band-ink cta-band" id="download">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Ten minutes tonight</div>
+    <h2 class="h2" style="margin-top: 18px;">
+      Start the shutdown.<br/>
+      <em class="italic" style="color: rgba(250,248,243,0.55);">Sleep on the rest.</em>
+    </h2>
+    <p class="muted">
+      Free, forever, no account. Works offline. Your data never leaves the phone.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 32px;">
+      <a href="#" class="btn" style="background: var(--paper); color: var(--ink);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        Download on the App Store
+      </a>
+      <a href="#protocol" class="btn" style="background: rgba(250,248,243,0.08); color: var(--paper); border: 1px solid rgba(250,248,243,0.15);">See the protocol</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="wordmark" style="font-size: 18px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 9 A8 8 0 0 1 20 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="18" r="2.2" fill="currentColor"/></svg>
+          Attune
+        </div>
+        <div style="margin-top: 8px; font-size: 12px; color: var(--ink-4); font-family: var(--font-mono); letter-spacing: 0.4px;">
+          EVENING SHUTDOWN RITUAL · MADE FOR IOS
+        </div>
+      </div>
+      <div class="foot-links">
+        <a href="#protocol">Protocol</a>
+        <a href="#research">Research</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:attune@jedilabs.io">Contact</a>
+      </div>
+    </div>
+    <hr class="rule" style="margin: 32px 0 16px;">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 12px; color: var(--ink-4);">
+      <div>© 2026 Attune · Built by Jedilabs.</div>
+      <div style="font-family: var(--font-mono); letter-spacing: 0.4px;">v1.0.0</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
